@@ -25,7 +25,9 @@ async fn main() {
             let mut line = String::new();
 
             loop {
+                // use case: multiple channels with shared state
                 tokio::select! {
+                    // in this case there are two tasks executing
                     res = reader.read_line(&mut line) => {
                         if res.unwrap() == 0 {
                             break;
